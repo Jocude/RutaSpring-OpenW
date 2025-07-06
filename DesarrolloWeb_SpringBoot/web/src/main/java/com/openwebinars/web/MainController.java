@@ -30,4 +30,14 @@ public class MainController {
     public ResponseEntity<String> responseEntity(){
         return ResponseEntity.ok("Hola desde ResponseEntity<String>!!");
     }
+
+    @GetMapping("/forward")
+    public String forward(){
+        return "forward:/";
+    }
+
+    @GetMapping("/redirect")
+    public String redirect(){
+        return "redirect:/";
+    }
 }
