@@ -3,9 +3,8 @@ package com.openwebinars.web;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
@@ -40,4 +39,35 @@ public class MainController {
     public String redirect(){
         return "redirect:/";
     }
+
+    @GetMapping("/producto/{id:[0-9]+}")
+    public String emjemploPathVariable(
+        @PathVariable("id") Long id,
+        Model model){
+            model.addAttribute("id",id);
+            return "producto";
+        }
+
+
+    @GetMapping("/saludo")
+    public String ejemploQueryParam(
+            @RequestParam(
+                    name="nombre",
+                    required = false,
+                    defaultValue = "User"
+            ) String nombre,
+            Model model
+    )   {
+        String msg = "Hola, "+ nombre;
+        model.addAttribute("message",msg);
+        return "index";
+    }
+
+    @GetMapping("/multimap")
+    public ResponseEntity<String> ejemploMultiValue(
+            @RequestParam MultiValueMap<String,String> params
+            ) {
+        return ResponseEntity.ok(params.toString());
+    }
+
 }
