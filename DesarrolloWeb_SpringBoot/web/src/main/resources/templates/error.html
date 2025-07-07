@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Algo salió mal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .error-container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        .error-code {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #6c757d;
+        }
+        .error-details {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            text-align: left;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="error-container">
+    <div class="error-code" th:text="${status}">Error</div>
+    <div class="error-message">¡Oops! Algo salió mal</div>
+    <p th:text="${error}">Ha ocurrido un error inesperado</p>
+
+    <div class="error-details">
+        <strong>Detalles del error:</strong><br>
+        <strong>Código:</strong> <span th:text="${status}">500</span><br>
+        <strong>Mensaje:</strong> <span th:text="${message}">Error interno del servidor</span><br>
+        <strong>Ruta:</strong> <span th:text="${path}">/</span><br>
+        <strong>Timestamp:</strong> <span th:text="${timestamp}">2025-07-07</span>
+    </div>
+
+    <a href="/" class="btn">Volver al inicio</a>
+</div>
+</body>
+</html>

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Controller
 @RequiredArgsConstructor
 public class MainController {
-    private  final ProductoRepos productoRepos;
+    private final ProductoRepos productoRepos;
     //@Autowired
     //private ProductoRepos productoRepos; //ESTA ES OTRA OPCION
 
@@ -81,8 +81,8 @@ public class MainController {
     }
 
     @GetMapping("/error")
-    public String mostrarError(Model model){
-
+    public String mostrarError(Model model) {
+        return "error";
     }
 
     @GetMapping("tips")
@@ -96,7 +96,7 @@ public class MainController {
         model.addAttribute("producto",producto);
         */
         model.addAttribute("message", "Comercio Internacional");
-        model.addAttribute("productos",productoRepos.cargarLista()); //LEER LISTA
+        model.addAttribute("productos", productoRepos.cargarLista()); //LEER LISTA
         model.addAttribute("fecha",
                 LocalDateTime.of(LocalDateTime.now().getYear(),
                         LocalDateTime.now().getMonth(),
