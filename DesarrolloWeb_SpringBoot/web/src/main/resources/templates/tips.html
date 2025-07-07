@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina Spring Boot</title>
+</head>
+<body>
+<h1 th:text="${message}">Hello Word!!!</h1>
+<p th:text="${otroSaludo}"></p>
+<p>Ultima actualizacion: <span th:text="${#temporals.format(fecha, 'dd/MMM/yyyy HH:mm:ss')}">Fecha y hora</span></p>
+
+<ul th:each="producto : ${productos}"
+        th:styleappend="${producto.enOferta} ? 'background-color:yellow;'">
+    <li>ID:         <span th:text="${producto.id}"></span></li>
+    <li>Producto:   <span th:text="${producto.nombre}"></span></li>
+    <li>Precio:     <span th:text="${producto.precio}"></span></li>
+    <li>Oferta:    <span th:text="${producto.enOferta ? 'Si' : 'No'}"></span></li>
+    <li>
+        <a href="@{/product/{id}/details(id=${producto.id})}">Ver mas...</a>
+    </li>
+</ul>
+
+</body>
+</html>
