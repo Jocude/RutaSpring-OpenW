@@ -10,6 +10,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class Categoria {
     @Id
