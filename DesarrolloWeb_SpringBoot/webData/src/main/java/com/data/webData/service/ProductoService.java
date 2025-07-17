@@ -26,7 +26,7 @@ public class ProductoService {
                 .orElseThrow(() -> new EntityNotFoundException("Product not found"));
     }
 
-    public void delete(long id){
+    public void delete(Long id){
         productoRepository.deleteById(id);
     }
 
